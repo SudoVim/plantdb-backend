@@ -4,8 +4,10 @@ flask API for plantDB
 
 import pymongo
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 app = Flask("plantdb-api")
+CORS(app)
 
 @app.route('/v1/categories/')
 def get_categories():
