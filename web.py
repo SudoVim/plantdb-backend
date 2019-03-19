@@ -26,6 +26,7 @@ PLANTS_KEYS = [
     "category",
     "description",
     "tags",
+    "image",
 
 ]
 
@@ -48,11 +49,10 @@ def get_plants():
         ]
 
     plants = client.plantdb.plants.find(query)
-
     return jsonify(
         [
             {
-                k: p[k] for k in PLANTS_KEYS
+                k: p.get(k, None) for k in PLANTS_KEYS
 
             } for p in plants
 
